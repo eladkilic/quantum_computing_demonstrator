@@ -1,0 +1,542 @@
+@import url(https://db.onlinewebfonts.com/c/c0a6c9d3bedbb6c84f6e831ffdd0db29?family=Mokoto+Glitch+Mark+Outline);
+
+
+html {
+    height: 100%;
+}
+@font-face {
+    font-family: "Mokoto Glitch Mark Outline";
+    src: url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.eot");
+    src: url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.svg#Mokoto Glitch Mark Outline")format("svg");
+}
+
+@font-face {
+    font-family: 'Mokoto';
+    src: url('fonts/Mokoto Demo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Speedy';
+    src: url('fonts/SpeedyRegular-7BLoE.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+body {
+    background-color: #030D1A;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.top-bar {
+    width: 100%;
+    padding: 5px 0;
+    background: linear-gradient(90deg, #122736, #122736, #122736);
+}
+
+.bottom-bar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0;
+    background: linear-gradient(90deg, #122736, #122736, #122736);
+}
+
+.background-container-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    width: 100%;
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #1B7895;
+    letter-spacing: 2px;
+    
+}
+
+.background-container-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    width: 100%;
+    bottom: 0;
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #1B7895;
+    letter-spacing: 2px;
+    
+}
+
+.background-writing-left {
+    text-align: left;
+}
+
+.background-writing-middle {
+    text-align: center;
+}
+
+.background-writing-right {
+    text-align: right;
+}
+
+
+.top-line {
+    border: none;
+    height: 2px;
+    background-color:#1B7895;
+    margin: 0px 0;
+    width: 100vw; /*vw= full width of the window*/
+}
+
+.bottom-line {
+    position: fixed;
+    border: none;
+    height: 2px;
+    background-color:#1B7895;
+    bottom: 40px;
+    width: 100vw; /*vw= full width of the window*/
+}
+
+.anleitung-button {
+    
+    right: 0;
+    background-color: #9E9E9E;
+    position: absolute;
+    font-family: "Mokoto", sans-serif;
+    color: black;
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    border-radius: 10px;
+    margin-right: 20px;
+    top: 60px;
+    border: none;
+}
+
+
+
+.game-logo {
+    font-family: "Mokoto Glitch Mark Outline";
+    font-size: 48px;
+    color: #1B7895;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.title-line {
+    border: none;
+    height: 1px;
+    width: 100px;
+    border-top: 1px dotted #1B7895;
+    margin: 5px auto;
+    margin-top: -10px;
+    width: 70%; /*vw= full width of the window*/
+}
+
+form {
+    text-align: center;
+}
+
+.button {
+    
+    font-family: "Mokoto", sans-serif;
+    padding: 15px 30px;
+    color: #E3DFE6;
+    background-color: #563A85;
+    text-align: center;
+    border: 2px solid #563A85;
+    transition: box-shadow 0.1s ease;
+
+    transform: skewX(-20deg);
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button span {
+    display: inline-block;
+    transform: skewX(20deg);
+    /*line-height: 60px;*/
+}
+
+.button:hover {
+    box-shadow: 0 5px 25px rgba(117, 77, 145, 0.9);
+}
+
+
+
+.game-schrift {
+    font-family: "Mokoto", sans-serif;
+    font-size: 24px;
+    color: #563A85;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.game-erklaerung {
+    font-family: "Speedy", sans-serif;
+    font-size: 18px;
+    color: #563A85;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-start-mission {
+    font-size: 20px;
+    width: auto;
+    min-width: 180px;
+    height: 60px;
+    margin-top: 100px;
+}
+
+
+/* ----story screen----*/
+
+#story_screen {
+    display: none;
+}
+
+.game-logo2 {
+    font-family: "Mokoto Glitch Mark Outline";
+    font-size: 48px;
+    color: #1B7895;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.game-schrift {
+    font-family: "Mokoto", sans-serif;
+    font-size: 24px;
+    color: #563A85;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.speech-bubble {
+    position: relative;
+    color: #E3DFE6;
+    background-color: #563A85;
+    border-radius: 0px;
+    padding: 15px 20px;
+    max-width: 80%;
+    margin: 20px auto;
+    position: relative;
+    font-family: 'Andale Mono', 'AndaleMono' ,monospace;
+    line-height: 1.0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transform: skewX(-20deg);
+}
+
+.speech-bubble::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: -15px;
+    border-width: 10px 15px 10px 0;
+    border-style: solid;
+    border-color: #563A85;
+}
+
+.speech-bubble span {
+    display: inline-block;
+    transform: skewX(20deg);
+    /*line-height: 60px;*/
+}
+
+.story-weiter-button {
+    position: relative;
+    width: auto;
+    min-width: 180px;
+    height: 60px;
+    margin-top: -20px;
+    font-size: 20px;
+    top: -60px;
+}
+
+.back-to-first-screen-button {
+    position: relative;
+    width: auto;
+    min-width: 180px;
+    height: 60px;
+    margin-top: 100px;
+    bottom: 200px;
+    font-size: 18px;
+    top: -60px;
+}
+
+/*---role screen---*/
+
+#role_screen {
+    display: none;
+}
+
+.spielrolle_waehlen {
+    position: relative;
+    font-family: "Mokoto", sans-serif;
+    color: #E3DFE6;
+    margin-top: 100px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.manual-button {
+    position: static;
+    width: auto;
+    min-width: 180px;
+    height: 60px;
+    margin-top: 100px;
+    bottom: 200px;
+    font-size: 20px;
+
+}
+
+.grover-button {
+    position: static;
+    width: auto;
+    min-width: 180px;
+    height: 60px;
+    margin-top: -20px;
+    bottom: 200px;
+    font-size: 20px;
+
+}
+
+.back-to-story-screen-button {
+    font-family: "Mokoto", sans-serif;
+    position: static;
+    width: auto;
+    min-width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+    bottom: -100px;
+    font-size: 20px;
+}
+
+
+
+/*---Anleitung screen---*/
+
+h2 {
+    font-family: "Mokoto", sans-serif;
+    font-size: 30px;
+    display: block;
+    color: #1B7895;
+    text-align: center;
+}
+
+#anleitung-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.anleitung {
+    background-color: #030D1A;
+    border: 1px solid #1B7895;
+    padding: 20px 20px;
+    margin: 28px auto 14px auto;
+    position: relative;
+    width: 94%;
+    height: calc(100vh - 56px);
+    border-radius: 8px;
+}
+
+.anleitung-schrift {
+    font-family: "Speedy", sans-serif;
+    font-size: 35px;
+    color: #563A85;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.anleitung-schliessen-button {
+    font-size: 20px;
+    height: 52px;
+    margin: 0;
+    min-width: 52px;
+    padding: 0;
+    position: absolute;
+    right: 24px;
+    top: 22px;
+    width: 52px;
+    z-index: 2;
+}
+
+.anleitung-text1 {
+    color: #E3DFE6;
+    font-family: AppleGothic;
+    line-height: 1.6;
+    width: 80%;
+    height: auto;
+    font-size: 20px;
+    margin: 50px auto 0 auto;
+    
+    padding-bottom: 40px;
+    
+}
+
+.anleitung-text-grover {
+    color: #E3DFE6;
+    font-family: AppleGothic;
+    line-height: 1.6;
+    width: 80%;
+    height: auto;
+    font-size: 20px;
+    margin: 80px auto 0 auto;
+    
+    padding-bottom: 40px;
+    
+}
+
+.anleitung-text-funktion {
+    color: #E3DFE6;
+    font-family: AppleGothic;
+    line-height: 1.6;
+    width: 80%;
+    height: auto;
+    font-size: 20px;
+    margin: 80px auto 0 auto;
+    
+    padding-bottom: 40px;
+    
+}
+
+.anleitung-text-messen {
+    color: #E3DFE6;
+    font-family: AppleGothic;
+    line-height: 1.6;
+    width: 80%;
+    height: auto;
+    font-size: 20px;
+    margin: 80px auto 0 auto;
+    
+    padding-bottom: 40px;
+    
+}
+
+.anleitung-text-orakel {
+    color: #E3DFE6;
+    font-family: AppleGothic;
+    line-height: 1.6;
+    width: 80%;
+    height: auto;
+    font-size: 20px;
+    margin: 80px auto 0 auto;
+    
+    padding-bottom: 40px;
+    
+}
+
+.anleitung-text1 b,
+.anleitung-text-grover b,
+.anleitung-text-funktion b,
+.anleitung-text-messen b,
+.anleitung-text-orakel b
+ {
+    font-family: "Mokoto", "Courier New", monospace;
+    color: #2ea2c7;
+    font-weight: bold;
+}
+
+.anleitung-text1 p {
+    
+    color: #E3DFE6;
+}
+
+.anleitung {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.anleitung-text1,
+.anleitung-text-grover,
+.anleitung-text-funktion,
+.anleitung-text-messen,
+.anleitung-text-orakel {
+    display: none;
+}
+
+.anleitung-slide.active {
+    display: block;
+    flex: 0 0 min(480px, calc(100vh - 260px));
+    height: min(480px, calc(100vh - 260px));
+    overflow-y: auto;
+    border: 1px solid rgba(27, 120, 149, 0.55);
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 28px 34px;
+    margin: 45px auto 0 auto;
+    width: 92%;
+    scrollbar-color: #1B7895 rgba(27, 120, 149, 0.16);
+}
+
+.anleitung-slide.active::-webkit-scrollbar {
+    width: 10px;
+}
+
+.anleitung-slide.active::-webkit-scrollbar-track {
+    background: rgba(27, 120, 149, 0.16);
+    border-radius: 10px;
+}
+
+.anleitung-slide.active::-webkit-scrollbar-thumb {
+    background: #1B7895;
+    border-radius: 10px;
+}
+
+.anleitung-slide h2 {
+    margin-top: 0;
+}
+
+.anleitung-navigation {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin: auto auto 0 auto;
+    padding-bottom: 18px;
+}
+
+.anleitung-nav-button {
+    font-size: 24px;
+    height: 54px;
+    margin: 0;
+    min-width: 64px;
+    padding: 0;
+    width: 64px;
+}
+
+.anleitung-nav-button:disabled {
+    cursor: default;
+    opacity: 0.35;
+}
+
+.anleitung-counter {
+    color: #E3DFE6;
+    font-family: "Mokoto", "Courier New", monospace;
+    font-size: 18px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.anleitung-schliessen-button {
+    margin: 0;
+}

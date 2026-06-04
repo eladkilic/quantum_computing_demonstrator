@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Start Screen</title>
+        <link rel="stylesheet" href="end.css">
+        <script src="end.js" async defer></script>
+        <script src="anleitung.js" defer></script>
+        <meta charset="UTF-8">
+        <link href="https://db.onlinewebfonts.com/c/c0a6c9d3bedbb6c84f6e831ffdd0db29?family=Mokoto+Glitch+Mark+Outline" rel="stylesheet">
+
+    </head>
+
+    
+    <body>
+        <!-- Background Leiste und Schrift oben-->
+        <div class="top-bar">
+            <div class="background-container-top">
+            
+                <h3 class="background-writing-left">SYSTEM ONLINE</h3>
+                <h3 class="background-writing-middle">56°30'N 04°00'E</h3>
+                <h3 class="background-writing-right">EST. 3100</h3>
+            </div>
+        </div>
+
+        <hr class="top-line"> 
+
+        <!-- end screen-->
+        <div id="end_screen">
+            <form> 
+                <button type="button" class="anleitung-button" onclick="anleitungOeffnen()"><span>?</span></button>
+            </form>
+            <form> 
+                
+                <h1 class="mission-erfolgreich">MISSION ERFOLGREICH</h1>
+                
+                
+
+                <div class="ergebnisse">Ergebnisse:</div>
+
+                <div class="ergebnisse-container">
+                    <div class="grover-container">
+                        <div class="grover-suche">Grover Suche: </div>
+                        <div class="grover-ergebnisse">benötigte Züge: </div>
+                    </div>
+                    <div class="manual-container">
+                        <div class="manual-suche">Manuelle Suche: </div>
+                        <div class="manual-ergebnisse">benötigte Züge: </div>
+                    </div>
+                    
+                </div>
+                
+                <button type="button" class="button nochmal-spielen" onclick="toStartScreen()"><span>nochmal spielen</span></button>
+                
+            </form>
+        </div>
+
+
+        <!-- Anleitung Screen-->
+        <div id="anleitung-screen" >
+            <div class="anleitung-text">
+                <div class="anleitung-schrift">Anleitung</div>
+            </div>
+            <form>
+                <button type="button" class="button anleitung-schliessen-button" onclick="anleitungSchliessen()"><span>X</span></button>
+            </form>
+        </div>
+
+
+        <!-- Background Leiste und Schrift unten-->
+        <div class="bottom-bar">
+            <div class="background-container-bottom">
+                <h3 class="background-writing-left">DRONE V4.2 // WÄRME-CAM AKTIV</h3>
+                <h3 class="background-writing-middle">SIGNAL STARK</h3>
+                <h3 class="background-writing-right">Zone: NORDSEE-8</h3>
+            </div>
+        </div>
+
+        <hr class="bottom-line"> 
+
+    </body>
+
+</html>

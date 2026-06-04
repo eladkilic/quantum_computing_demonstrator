@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+
+# Game state (generated at runtime)
+src/gamestate.json
+
+# macOS
+.DS_Store

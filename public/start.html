@@ -1,0 +1,199 @@
+<html>
+    <head>
+        <title>Start Screen</title>
+        <link rel="stylesheet" href="start.css">
+        <script src="start.js" async defer></script>
+        <script src="anleitung.js" defer></script>
+        <meta charset="UTF-8">
+        <link href="https://db.onlinewebfonts.com/c/c0a6c9d3bedbb6c84f6e831ffdd0db29?family=Mokoto+Glitch+Mark+Outline" rel="stylesheet">
+    </head>
+
+    
+    <body>
+        <!-- Background Leiste und Schrift oben-->
+        <div class="top-bar">
+            <div class="background-container-top">
+            
+                <h3 class="background-writing-left">SYSTEM ONLINE</h3>
+                <h3 class="background-writing-middle">56°30'N 04°00'E</h3>
+                <h3 class="background-writing-right">EST. 3100</h3>
+            </div>
+        </div>
+
+        <hr class="top-line"> 
+        
+
+        <!-- erster screen-->
+        <div id="erster_screen">
+            <form> 
+                <button type="button" class="anleitung-button" onclick="anleitungOeffnen()"><span>?</span></button>
+            </form>
+            <form> 
+                
+                <h1 class="game-logo">THERMAL SEARCH</h1>
+                
+                <hr class="title-line"> 
+
+                <div class="game-schrift">Suche & Rettung</div>
+                <div class="game-erklaerung">verstehe den Grover Algorithmus!</div>
+                <button type="button" class="button button-start-mission" onclick="startMission()"><span>Mission starten</span></button>
+                
+            </form>
+        </div>
+
+        <!-- storyline screen-->
+        <div id="story_screen">
+            <form> 
+                <button type="button" class="anleitung-button" onclick="anleitungOeffnen()"><span>?</span></button>
+            </form>
+            
+                <div class="game-logo2">THERMAL SEARCH</div>
+                <div class="speech-bubble">
+                    <span>Es ist die Nacht des 6. Junis. Wir sind auf einem Frachtschiff.</span>
+                </div>
+                <div class="speech-bubble">
+                    <span>Es gab einen Schrei und ein Platschen. Jemand ist über Bord gegangen, wir müssen ihn so schnell wie möglich finden.</span>
+                </div>
+                <div class="speech-bubble">
+                    <span>ZENTRALE: Du fliegst die Drohne. Wärmebildsensor aktiv. Irgendwo da draußen wartet er. Das Meer ist weit und die Zeit läuft ab. </span>
+                </div>
+                <div class="speech-bubble">
+                    <span>Ist der Grover Algorithmus schneller als die manuelle Suche? </span>
+                </div>
+            
+                <form> 
+                    <button type="button" class="button back-to-first-screen-button" onclick="backToFirstScreen()"><span>zurück</span></button>
+                    <button type="button" class="button story-weiter-button" onclick="zurRollenAuswahl()"><span>weiter</span></button>
+                    
+                </form>
+        </div>
+        <!--Rolle wählen screen-->
+        <div id="role_screen">
+
+            <form> 
+                <button type="button" class="anleitung-button" onclick="anleitungOeffnen()"><span>?</span></button>
+            </form>
+            <div class="spielrolle_waehlen">Wähle einen Modus</div>
+            <form> 
+                
+                <button type="button" class="button manual-button" onclick="startManualSearch()"><span>Klassischer Modus</span></button>
+                <button type="button" class="button grover-button" onclick="startQuantumSearch()"><span>Quantenmodus</span></button>
+                
+            </form>
+            <form>
+                <button type="button" class="button back-to-story-screen-button" onclick="backToStoryScreen()"><span>zurück</span></button>
+            </form>
+            
+        </div>
+
+
+        <!-- Anleitung Screen-->
+        <div id="anleitung-screen" >
+            <div class="anleitung">
+                <div class="anleitung-schrift">Anleitung</div>
+                <div class="anleitung-text1"> 
+                    <h2>Spielerklärung</h2>
+                    <p>Ziel des Spiels ist es, den <b>Grover-Quantenalgorithmus</b> zu demonstrieren.
+                        Es gibt einen Überlebenden, der gefunden werden muss. Die Spieler sehen durch eine Wärmekamera, 
+                        die das Wasser filmt und die Hitzespots (orangene Farbe) im Wasser aufzeigt. Bei all diesen Hitzespots 
+                        könnte der Überlebende sein. </p>
+                        
+                        <p>Ein Spieler spielt mit dem Grover Algorithmus, der andere sucht manuell. 
+                        Beide Spieler versuchen den Überlebenden so schnell wie möglich zu finden. Bei der manuellen Suche wird 
+                        erst ein Hitzespot ausgewählt und dann auf <b>“Spot aufdecken”</b> gedrückt. Bei der Grover-Suche wird das 
+                        <b>Orakel</b> benutzt, um den richtigen Hitzespot zu markieren; es dreht das Vorzeichen seiner Amplitude um. 
+                        Danach wird durch eine Inversion aller Amplituden um ihren Mittelwert die <b>Wahrscheinlichkeit</b> des markierten 
+                        Spots erhöht. Der Grover-Spieler kann zu jeder Zeit <b>“messen”</b>, was aus allen Hitzespots einen auswählt. 
+                        Der Hitzespot wird ausgewählt nach den jeweiligen Wahrscheinlichkeiten. In jeder Runde muss gewartet werden, 
+                        bis der andere Spieler mit seinem Zug fertig ist. </p>
+                </div>
+                <div class="anleitung-text-grover">
+                    <h2>Grover Algorithmus</h2>
+
+                    <p>Er ist entwickelt worden, um Probleme zu lösen, bei denen es zwar schwierig ist, eine Lösung zu finden, 
+                        aber einfach, sie zu verifizieren. Ein Beispiel dafür ist Sudoku. Es braucht Zeit, alle Felder korrekt 
+                        auszufüllen, aber eine fertige Lösung zu überprüfen geht schnell. Der grover Algorithmus kann solche 
+                        Probleme viel schneller lösen als ein klassischer Algorithmus, der alle möglichen Lösungen der Reihe 
+                        nach durchprobiert. Da der Grover Algorithmus auf einem Quantencomputer läuft, nutzt er die Eigenschaft 
+                        der <b>Superposition</b> - er kann alle möglichen Lösungen gleichzeitig berücksichtigen.</p>
+                </div>
+
+                <div class="anleitung-text-funktion"> 
+                    <p><h2>Wie funktioniert der Grover Algorithmus?</h2></p>
+                    <p>Zu Beginn werden alle möglichen Lösungen gleichwertig berücksichtigt. In diesem Spiel sind das alle 
+                        möglichen Hitzespots, bei denen der Überlebende sein könnte. Die <b>Amplitude</b> ist eine Zahl, die, 
+                        wenn man sie quadriert und den Betrag davon nimmt, die <b>Wahrscheinlichkeit</b> angibt, mit welcher die 
+                        Lösung die tatsächliche Lösung des Problems ist. Hat ein Hitzespot zum Beispiel eine Amplitude von 
+                        0,4, dann ist seine Wahrscheinlichkeit 16%, also eine 16 prozentige Chance, dass der Überlebende sich dort befindet. 
+
+                        Das Ziel ist es, die Wahrscheinlichkeit von einem Hitzespot so zu erhöhen, dass wir ziemlich sicher sagen können: “bei diesem Spot ist der Überlebende”. 
+                        Am Anfang haben alle Lösungen die gleiche Amplitude und damit auch die gleiche Wahrscheinlichkeit. In jeder Grover Iteration passieren <b>zwei Schritte: </b>
+                        <br><br>
+                        1. Das <b>Orakel wird angewandt</b>, es erkennt den richtigen Hitzespot und dreht das Vorzeichen seiner Amplitude um. Aus +0,4 wird also -0,4, das allein erhöht 
+                        die Warscheinlichkeit noch nicht, da 0,4^2 = 0,16 genau wie (-0,4)^2 = 0,16.
+                        <br><br>
+                        2. Erst im zweiten Schritt, der <b>Inversion um den Mittelwert</b>, werden alle Amplituden so gespiegelt, dass die markierte Amplitude wächst und alle anderen sinken. 
+                        <br><br>
+                        Diese beiden Schritte zusammen bilden eine <b>Grover Iteration</b>.  Nach wenigen Iterationen ist dann die Wahrscheinlichkeit des richtigen Hitzespots so hoch, dass 
+                        wir mit großer Sicherheit den Überlebenden finden. Die nötige Anzahl der Iterationen hängt davon ab wie viele Hitzespots es gibt; je mehr mögliche Lösungen, 
+                        desto mehr Iterationen gibt es. Wenn über die optimale Anzahl an Iterationen hinausgegangen wird, dann wird die Amplitude und damit die Wahrscheinlichkeit wieder <b>kleiner</b>.</p> 
+                                
+                    
+                </div>
+
+                <div class="anleitung-text-messen"> 
+
+                    <h2>Messen</h2>
+
+                    <p>In der Realität passiert all das versteckt vor uns. Wir können niemals die Wahrscheinlichkeiten oder Amplituden sehen, 
+                        denn eine Eigenschaft von Quanten Teilchen ist, dass, wenn man sie misst, dann kollabiert der Zustand der 
+                        Wahrscheinlichkeiten und eine mögliche Lösung wird ausgewählt. Wenn wir messen, dann wird nach den 
+                        Wahrscheinlichkeiten die die möglichen Lösungen gerade haben, eine Lösung ausgewählt und ihre Wahrscheinlichkeit 
+                        nimmt <b>100%</b> an, während die Wahrscheinlichkeiten aller anderen möglichen Lösungen <b>0%</b> annehmen. Wenn wir also zu 
+                        Anfang des Grover Algorithmus messen, dann haben alle möglichen Lösungen die gleiche, und zwar eine sehr kleine 
+                        Wahrscheinlichkeit. Das bedeutet, es wird zufällig eine mögliche Lösung ausgewählt. Zum Beispiel hier haben alle 
+                        16 Hitzespots zu Anfang die Wahrscheinlichkeit <b>6.2%</b>. Es ist also sehr unwahrscheinlich, dass die richtige Lösung 
+                        ausgewählt wird. Wenn man aber nach der zweiten Iteration misst, dann hat die richtige Lösung schon <b>90,5%</b> 
+                        Wahrscheinlichkeit beim messen gewählt zu werden.</p>
+                    
+                </div>
+
+                <div class="anleitung-text-orakel">
+                    <h2>Woher weiss das Orakel bei welchem Spot das Vorzeichen umgedreht werden muss?</h2>
+    
+                    <p>Das Orakel ist wie eine <b>Black Box</b>, bei der man nicht rein schauen kann. Wenn das Orakel eine mögliche Lösung 
+                        als Input bekommt, kann es ausspucken, ob es die richtige Lösung ist oder nicht. Es kann aber nicht die 
+                        Lösung selber zurückgeben. Da der Algorithmus auf einem Quantencomputer läuft, kann das Orakel alle möglichen 
+                        Lösungen <b>“gleichzeitig”</b> testen. Warum kann man nicht einfach schon bei der ersten Iteration nachschauen, welche 
+                        Lösung das Orakel ausgewählt hat? Wenn man den Zustand misst, dann <b>kollabiert</b> der Zustand der Superposition, 
+                        also eine mögliche Lösung wird ausgewählt und ihre Wahrscheinlichkeit nimmt 100% an, während alle anderen 0% 
+                        annehmen. Wenn man das schon nach der ersten Iteration tut, dann ist die Wahrscheinlichkeit, dass die richtige 
+                        Lösung gewählt wird trotzdem relativ gering. Hier, bei 16 Hitzespots ist es eine ca. <b>50% Chance</b>, dass der 
+                        richtige Spot gewählt wird. Deshalb müssen wir warten bis der Grover Algorithmus alle seine Iterationen 
+                        durchgegangen ist, um die Wahrscheinlichkeit der richtigen Lösung zu maximieren.</p>
+                    <br>
+                </div>
+                <form>
+                    <button type="button" class="button anleitung-schliessen-button" onclick="anleitungSchliessen()"><span>X</span></button>
+                </form>
+            </div>
+            
+            
+        </div>
+
+
+
+        <!-- Background Leiste und Schrift unten-->
+        <div class="bottom-bar">
+            <div class="background-container-bottom">
+                <h3 class="background-writing-left">DRONE V4.2 // WÄRME-CAM AKTIV</h3>
+                <h3 class="background-writing-middle">SIGNAL STARK</h3>
+                <h3 class="background-writing-right">Zone: NORDSEE-8</h3>
+            </div>
+        </div>
+
+        <hr class="bottom-line"> 
+
+    </body>
+
+</html>

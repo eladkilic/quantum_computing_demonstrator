@@ -1,0 +1,249 @@
+@import url(https://db.onlinewebfonts.com/c/c0a6c9d3bedbb6c84f6e831ffdd0db29?family=Mokoto+Glitch+Mark+Outline);
+
+
+html {
+    height: 100%;
+}
+@font-face {
+    font-family: "Mokoto Glitch Mark Outline";
+    src: url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.eot");
+    src: url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.svg#Mokoto Glitch Mark Outline")format("svg");
+}
+
+@font-face {
+    font-family: 'Mokoto';
+    src: url('fonts/Mokoto Demo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Speedy';
+    src: url('fonts/SpeedyRegular-7BLoE.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #030D1A;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.top-bar {
+    width: 100%;
+    padding: 5px 0;
+    background: linear-gradient(90deg, #122736, #122736, #122736);
+}
+
+.bottom-bar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0;
+    background: linear-gradient(90deg, #122736, #122736, #122736);
+}
+
+.background-container-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    width: 100%;
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #1B7895;
+    letter-spacing: 2px;
+    
+}
+
+.background-container-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    width: 100%;
+    bottom: 0;
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #1B7895;
+    letter-spacing: 2px;
+    
+}
+
+.background-writing-left {
+    text-align: left;
+}
+
+.background-writing-middle {
+    text-align: center;
+}
+
+.background-writing-right {
+    text-align: right;
+}
+
+
+.top-line {
+    border: none;
+    height: 2px;
+    background-color:#1B7895;
+    margin: 0px 0;
+    width: 100vw; /*vw= full width of the window*/
+}
+
+.bottom-line {
+    position: fixed;
+    border: none;
+    height: 2px;
+    background-color:#1B7895;
+    bottom: 40px;
+    width: 100vw; /*vw= full width of the window*/
+}
+
+.anleitung-button {
+    
+    right: 0;
+    background-color: #9E9E9E;
+    position: absolute;
+    font-family: "Mokoto", sans-serif;
+    color: black;
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    border-radius: 10px;
+    margin-right: 20px;
+    top: 60px;
+    border: none;
+}
+
+.mission-erfolgreich {
+    font-family: "Mokoto Glitch Mark Outline";
+    font-size: 48px;
+    color: #1B7895;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.button {
+    
+    font-family: "Mokoto", sans-serif;
+    padding: 15px 30px;
+    color: #E3DFE6;
+    background-color: #563A85;
+    text-align: center;
+    border: 2px solid #563A85;
+    transition: box-shadow 0.1s ease;
+
+    transform: skewX(-20deg);
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button span {
+    display: inline-block;
+    transform: skewX(20deg);
+    /*line-height: 60px;*/
+}
+
+.button:hover {
+    box-shadow: 0 5px 25px rgba(117, 77, 145, 0.9);
+}
+
+.ergebnisse {
+    font-family: "Mokoto", sans-serif;
+    font-size: 24px;
+    color: #E3DFE6;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.ergebnisse-container {
+    display: flex; /*horizontale Anordnung*/
+    justify-content: center;
+    gap: 150px;
+    margin-top: 30px;
+}
+
+.grover-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.grover-suche,
+.manual-suche {
+    position: relative;
+    font-family: "Mokoto", sans-serif;
+    font-size: 18px;
+    color: #E3DFE6;
+    text-align: center;
+    
+}
+
+.grover-ergebnisse,
+.manual-ergebnisse {
+    position: relative;
+    font-family: "Mokoto", sans-serif;
+    font-size: 16px;
+    color: #E3DFE6;
+    text-align: center;
+}
+
+
+
+.nochmal-spielen {
+    position: relative;
+    width: auto;
+    text-align: center;
+    min-width: 180px;
+    height: 60px;
+    font-size: 20px;
+    top: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
+
+/*---Anleitung screen---*/
+
+#anleitung-screen {
+    background-color: #030D1A;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.anleitung-text {
+    font-family: "Speedy", sans-serif;
+    font-size: 18px;
+    color: #563A85;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.anleitung-schliessen-button {
+    font-size: 20px;
+    height: 52px;
+    margin: 0;
+    min-width: 52px;
+    padding: 0;
+    position: absolute;
+    right: 24px;
+    top: 22px;
+    width: 52px;
+    z-index: 2;
+}
+

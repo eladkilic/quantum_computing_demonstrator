@@ -1,0 +1,825 @@
+@import url(https://db.onlinewebfonts.com/c/c0a6c9d3bedbb6c84f6e831ffdd0db29?family=Mokoto+Glitch+Mark+Outline);
+
+        @font-face {
+            font-family: "Mokoto Glitch Mark Outline";
+            src: url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.eot");
+            src: url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.eot?#iefix") format("embedded-opentype"),
+                 url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.woff2") format("woff2"),
+                 url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.woff") format("woff"),
+                 url("https://db.onlinewebfonts.com/t/c0a6c9d3bedbb6c84f6e831ffdd0db29.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Mokoto';
+            src: url('fonts/Mokoto Demo.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Speedy';
+            src: url('fonts/SpeedyRegular-7BLoE.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #030D1A;
+        }
+
+        /* ── TOP BAR (wie Startseite) ── */
+        .top-bar {
+            width: 100%;
+            padding: 5px 0;
+            background: linear-gradient(90deg, #122736, #122736, #122736);
+        }
+        .top-line {
+            border: none;
+            height: 2px;
+            background-color: #1B7895;
+            margin: 0;
+            width: 100vw;
+        }
+
+        /* ── BOTTOM BAR (wie Startseite) ── */
+        .bottom-bar {
+            position: fixed;
+            left: 0; bottom: 0;
+            width: 100%;
+            padding: 5px 0;
+            background: linear-gradient(90deg, #122736, #122736, #122736);
+        }
+        .bottom-line {
+            position: fixed;
+            border: none;
+            height: 2px;
+            background-color: #1B7895;
+            bottom: 40px;
+            width: 100vw;
+        }
+        .background-container-top,
+        .background-container-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            width: 100%;
+            font-size: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #1B7895;
+            letter-spacing: 2px;
+        }
+        .background-writing-left  { text-align: left; }
+        .background-writing-middle { text-align: center; }
+        .background-writing-right { text-align: right; }
+
+        /* ── TITLE ── */
+        .game-title {
+            font-family: "Mokoto", "Mokoto Glitch Mark Outline", monospace;
+            font-size: 36px;
+            color: #8aabca;
+            text-align: center;
+            margin: 28px 0 6px;
+            letter-spacing: 0.4rem;
+            line-height: 1.2;
+        }
+        .title-line {
+            border: none;
+            height: 0;
+            border-top: 2px dotted #00d4ff;
+            opacity: 0.31;
+            width: 30%;
+            margin: 0 auto 16px;
+        }
+
+        /* ── MAIN LAYOUT ── */
+        .main-card {
+            margin: 0 24px 100px;
+            border: 1px dotted #b6ccd7;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        /* ── STEP BAR (left column) */
+        .step-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 110px;  
+            flex-shrink: 0;
+        }
+        .step-label {
+            font-family: "Mokoto", monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-align: center;
+            color: #8aabca;
+            line-height: 1.4;
+        }
+        .step-bar-outer {
+            border: 2px dotted #d5f7ff;
+            border-radius: 30px;
+            padding: 6px;
+            width: 56px;        
+            height: 260px;
+            position: relative;
+        }
+        .step-bar-fill {
+            position: absolute;
+            border-radius: 24px;
+            bottom: 2px;
+            left: 1px;
+            right: 1px;    
+            background: #b6ccd7;
+            transition: height 0.4s ease;
+        }
+        .step-counter {
+            font-family: "Mokoto", monospace;
+            font-size: 16px;
+            color: #8aabca;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* ── THERMAL CAMERA (centre)  */
+        .thermal-col {
+            flex: 1;
+            padding: 0 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .thermal-wrapper {
+            position: relative;
+            border: 8px solid #8aabca;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(27,120,149,0.2), inset 0 0 40px rgba(80,0,120,0.5);
+            background: radial-gradient(ellipse at center, #6B1FA0 0%, #3A0F6B 50%, #220550 100%);
+            width: 100%;
+            max-width: 640px;
+        }
+        .thermal-grid-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        .scan-corner {
+            position: absolute;
+            width: 22px; height: 22px;
+            border-color: rgba(255,255,255,0.5);
+            border-style: solid;
+        }
+        .scan-corner.tl { top: 8px; left: 8px;   border-width: 2px 0 0 2px; }
+        .scan-corner.tr { top: 8px; right: 8px;  border-width: 2px 2px 0 0; }
+        .scan-corner.bl { bottom: 8px; left: 8px;  border-width: 0 0 2px 2px; }
+        .scan-corner.br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+       
+        #thermalCanvas {
+            display: block;
+            cursor: crosshair;
+            width: 100%;
+            height: 420px;
+        }
+
+        /* ── SIDE PANEL (right column) ── */
+        .side-col {
+            flex-shrink: 0;
+            width: 220px;
+        }
+        .side-box {
+            border: 1px dotted #b6ccd7;
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .zug-header {
+            font-family: "Mokoto", monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #8aabca;
+            opacity: 0.7;
+            text-align: right;
+        }
+        .zug-value {
+            font-family: "Mokoto", monospace;
+            font-size: 26px;
+            color: #8aabca;
+            letter-spacing: 3px;
+            text-align: right;
+            margin-top: 2px;
+        }
+
+        .side-divider {
+            border: none;
+            height: 1px;
+            background: #b6ccd7;
+            opacity: 0.25;
+            margin: 0;
+        }
+        .side-section-title {
+            font-family: "Mokoto", monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #8aabca;
+            line-height: 1.5;
+        }
+        .side-value-sm {
+            font-family: "Mokoto", monospace;
+            font-size: 14px;
+            color: #8aabca;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+        .side-label-sm {
+            font-family: "Mokoto", monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #8aabca;
+            opacity: 0.7;
+            margin-bottom: 2px;
+        }
+        .found-section {
+            text-align: center;
+        }
+        .found-big {
+            font-family: "Mokoto", monospace;
+            font-size: 32px;
+            color: #8aabca;
+            letter-spacing: 3px;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-row {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+        .game-btn {
+            font-family: "Mokoto", monospace;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #030D1A;
+            background: #8aabca;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 0;
+            cursor: pointer;
+            width: 100%;
+            line-height: 1.4;
+            transition: opacity 0.15s, box-shadow 0.15s;
+        }
+        .game-btn:hover:not(:disabled) { box-shadow: 0 0 14px rgba(138,171,202,0.7); }
+        .game-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        .game-btn.purple {
+            background: #563A85;
+            color: #E3DFE6;
+        }
+        .game-btn.purple:hover:not(:disabled) { box-shadow: 0 0 14px rgba(86,58,133,0.8); }
+        .btn-help {
+            font-family: "Mokoto", monospace;
+            font-size: 13px;
+            background: #8aabca;
+            color: #030D1A;
+            border: none;
+            border-radius: 4px;
+            width: 32px; height: 40px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* ── WAIT OVERLAY ── */
+        #wait-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(3,13,26,0.92);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 300;
+        }
+        #wait-overlay.hidden { display: none; }
+
+        #turn-notice,
+        #opponent-found-notice {
+            position: fixed;
+            top: 96px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            z-index: 650;
+            opacity: 0;
+            pointer-events: none;
+            background: rgba(10, 10, 20, 0.96);
+            border: 1px solid #a855f7;
+            color: #d8c7ff;
+            box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+            padding: 10px 26px;
+            font-family: "Mokoto", monospace;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-align: center;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+
+        #turn-notice.show,
+        #opponent-found-notice.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        #turn-notice {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateY(-8px);
+            background: rgba(10, 10, 20, 0.68);
+            border-radius: 16px;
+            font-size: 39px;
+            padding: 24px 60px;
+            white-space: nowrap;
+        }
+
+        #turn-notice.show {
+            transform: translate(-50%, -50%);
+        }
+
+        .wait-text {
+            font-family: 'Mokoto', monospace;
+            font-size: 16px;
+            letter-spacing: 3px;
+            color: #8aabca;
+        }
+
+        #grover-wait-indicator {
+            font-family: 'Mokoto', monospace;
+            font-size: 13px;
+            color: #8aabca;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 10px;
+            pointer-events: none;
+        }
+        .spinner {
+            width: 40px; height: 40px;
+            border: 3px solid #1B7895;
+            border-top-color: #8aabca;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── END OVERLAY ── */
+        #end-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(3,13,26,0.93);
+            z-index: 400;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+        #end-overlay.show { display: flex; }
+
+        /* Report card */
+        .report-card {
+            border: 1px dotted #b6ccd7;
+            border-radius: 16px;
+            width: 560px;
+            max-width: 90vw;
+            padding: 32px 40px;
+            background: rgba(13,32,48,0.97);
+        }
+        .report-title {
+            font-family: "Mokoto Glitch Mark Outline", "Mokoto", sans-serif;
+            font-size: 36px;
+            letter-spacing: 4px;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .report-subtitle {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #1B7895;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .report-divider {
+            border: none;
+            height: 1px;
+            background: #1B7895;
+            opacity: 0.4;
+            margin: 14px 0;
+        }
+        .report-section-title {
+            font-family: "Mokoto", monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #8aabca;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        .report-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+        }
+        .report-row-label {
+            font-family: "Mokoto", monospace;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #8aabca;
+            opacity: 0.7;
+        }
+        .report-row-value {
+            font-family: "Mokoto", monospace;
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: #8aabca;
+        }
+        .report-comparison {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(27,120,149,0.08);
+            border: 1px dotted #1B7895;
+            border-radius: 8px;
+            padding: 12px 0;
+            margin: 8px 0;
+        }
+        .report-comparison-item {
+            text-align: center;
+        }
+        .report-comparison-item .cmp-label {
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #1B7895;
+        }
+        .report-comparison-item .cmp-value {
+            font-family: "Mokoto", monospace;
+            font-size: 22px;
+            letter-spacing: 3px;
+            color: #8aabca;
+            margin-top: 4px;
+        }
+        .report-log {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: #8aabca;
+            opacity: 0.75;
+            letter-spacing: 1px;
+            line-height: 1.9;
+            max-height: 160px;
+            overflow-y: auto;
+        }
+        .report-log-entry { display: flex; gap: 8px; align-items: baseline; }
+        .log-found { color: #00ff88; opacity: 1; }
+        .log-empty { color: #8aabca; }
+        .report-btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 4px;
+        }
+        .report-btn-row .game-btn { flex: 1; }
+
+        /* ── TOOLTIP ── */
+        #tooltip {
+            display: none;
+            position: fixed;
+            background: rgba(3,13,26,0.88);
+            border: 1px solid #8aabca;
+            color: #8aabca;
+            font-family: 'Mokoto', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 500;
+        }
+
+        /*---Anleitung screen---*/
+
+        #anleitung-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #030D1A;
+        }
+
+        h2 {
+            font-family: "Mokoto", sans-serif;
+            font-size: 30px;
+            display: block;
+            color: #1B7895;
+            text-align: center;
+        }
+
+        .anleitung {
+            background-color: #030D1A;
+            border: 1px solid #1B7895;
+            padding: 20px 20px;
+            margin: 28px auto 14px auto;
+            position: relative;
+            width: 94%;
+            height: calc(100vh - 56px);
+            border-radius: 8px;
+        }
+
+        .anleitung-schrift {
+            font-family: "Speedy", sans-serif;
+            font-size: 35px;
+            color: #563A85;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .anleitung-schliessen-button {
+            font-size: 20px;
+            height: 52px;
+            margin: 0;
+            min-width: 52px;
+            padding: 0;
+            position: absolute;
+            right: 24px;
+            top: 22px;
+            width: 52px;
+            z-index: 2;
+        }
+
+        .anleitung-text1 {
+            color: #E3DFE6;
+            font-family: AppleGothic;
+            line-height: 1.6;
+            width: 80%;
+            height: auto;
+            font-size: 20px;
+            margin: 50px auto 0 auto;
+            
+            padding-bottom: 40px;
+            
+        }
+
+        .anleitung-text-grover {
+            color: #E3DFE6;
+            font-family: AppleGothic;
+            line-height: 1.6;
+            width: 80%;
+            height: auto;
+            font-size: 20px;
+            margin: 80px auto 0 auto;
+            
+            padding-bottom: 40px;
+            
+        }
+
+        .anleitung-text-funktion {
+            color: #E3DFE6;
+            font-family: AppleGothic;
+            line-height: 1.6;
+            width: 80%;
+            height: auto;
+            font-size: 20px;
+            margin: 80px auto 0 auto;
+            
+            padding-bottom: 40px;
+            
+        }
+
+        .anleitung-text-messen {
+            color: #E3DFE6;
+            font-family: AppleGothic;
+            line-height: 1.6;
+            width: 80%;
+            height: auto;
+            font-size: 20px;
+            margin: 80px auto 0 auto;
+            
+            padding-bottom: 40px;
+            
+        }
+
+        .anleitung-text-orakel {
+            color: #E3DFE6;
+            font-family: AppleGothic;
+            line-height: 1.6;
+            width: 80%;
+            height: auto;
+            font-size: 20px;
+            margin: 80px auto 0 auto;
+            
+            padding-bottom: 40px;
+            
+        }
+
+        .anleitung-text1 b,
+        .anleitung-text-grover b,
+        .anleitung-text-funktion b,
+        .anleitung-text-messen b,
+        .anleitung-text-orakel b
+        {
+            font-family: "Mokoto", "Courier New", monospace;
+            color: #2ea2c7;
+            font-weight: bold;
+        }
+
+        .anleitung-text1 p {
+            
+            color: #E3DFE6;
+        }
+
+        .anleitung {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .anleitung-text1,
+        .anleitung-text-grover,
+        .anleitung-text-funktion,
+        .anleitung-text-messen,
+        .anleitung-text-orakel {
+            display: none;
+        }
+
+        .anleitung-slide.active {
+            display: block;
+            flex: 0 0 min(480px, calc(100vh - 260px));
+            height: min(480px, calc(100vh - 260px));
+            overflow-y: auto;
+            border: 1px solid rgba(27, 120, 149, 0.55);
+            border-radius: 8px;
+            box-sizing: border-box;
+            padding: 28px 34px;
+            margin: 45px auto 0 auto;
+            width: 92%;
+            scrollbar-color: #1B7895 rgba(27, 120, 149, 0.16);
+        }
+
+        .anleitung-slide.active::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .anleitung-slide.active::-webkit-scrollbar-track {
+            background: rgba(27, 120, 149, 0.16);
+            border-radius: 10px;
+        }
+
+        .anleitung-slide.active::-webkit-scrollbar-thumb {
+            background: #1B7895;
+            border-radius: 10px;
+        }
+
+        .anleitung-slide h2 {
+            margin-top: 0;
+        }
+
+        .anleitung-navigation {
+            align-items: center;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin: auto auto 0 auto;
+            padding-bottom: 18px;
+        }
+
+        .anleitung-nav-button {
+            font-size: 24px;
+            height: 54px;
+            margin: 0;
+            min-width: 64px;
+            padding: 0;
+            width: 64px;
+        }
+
+        .anleitung-nav-button:disabled {
+            cursor: default;
+            opacity: 0.35;
+        }
+
+        .anleitung-counter {
+            color: #E3DFE6;
+            font-family: "Mokoto", "Courier New", monospace;
+            font-size: 18px;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .anleitung-schliessen-button {
+            margin: 0;
+        }
+
+        .button {
+    
+            font-family: "Mokoto", sans-serif;
+            padding: 15px 30px;
+            color: #E3DFE6;
+            background-color: #563A85;
+            text-align: center;
+            border: 2px solid #563A85;
+            transition: box-shadow 0.1s ease;
+
+            transform: skewX(-20deg);
+            cursor: pointer;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button span {
+            display: inline-block;
+            transform: skewX(20deg);
+            /*line-height: 60px;*/
+        }
+
+        .button:hover {
+            box-shadow: 0 5px 25px rgba(117, 77, 145, 0.9);
+        }
+
+        .anleitung-button {
+    
+            right: 0;
+            background-color: #9E9E9E;
+            position: absolute;
+            font-family: "Mokoto", sans-serif;
+            color: black;
+            font-size: 20px;
+            height: 35px;
+            width: 35px;
+            border-radius: 10px;
+            margin-right: 20px;
+            top: 60px;
+            border: none;
+        }
+
+
+/* ── SURVIVOR WAIT OVERLAY (mirrors grover side) ── */
+#survivor-wait-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(3,13,26,0.93);
+    z-index: 400;
+    align-items: center;
+    justify-content: center;
+}
+#survivor-wait-overlay.show { display: flex; }
+.survivor-wait-card {
+    border: 1px dotted #1B7895;
+    border-radius: 16px;
+    padding: 48px 56px;
+    background: rgba(13,32,48,0.97);
+    text-align: center;
+}
+.survivor-wait-title {
+    font-family: 'Mokoto', sans-serif;
+    font-size: 36px;
+    letter-spacing: 4px;
+    color: #00ff88;
+    margin-bottom: 20px;
+}
+.survivor-wait-cell {
+    font-family: 'Mokoto', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: #E3DFE6;
+    margin-bottom: 16px;
+}
+.survivor-wait-sub {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #1B7895;
+    text-transform: uppercase;
+}
+
+.anleitung-button-div {
+    position: relative;
+}

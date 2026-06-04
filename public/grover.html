@@ -1,0 +1,262 @@
+<html>
+    <head>
+        <title>Grover Search</title>
+        <link rel="stylesheet" href="grover.css">
+        <script src="anleitung.js" defer></script>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="background-container-top">
+                <h3 class="background-writing-left">QUANTENMODUS AKTIV</h3>
+                <h3 class="background-writing-middle">56°30'N 04°00'E</h3>
+                <h3 class="background-writing-right">EST. 3100</h3>
+            </div>
+        </div>
+        <hr class="top-line">
+
+        <div class="anleitung-button-div">
+            <form> 
+                <button type="button" class="anleitung-button" onclick="anleitungOeffnen()"><span>?</span></button>
+            </form>
+        </div>
+
+        <!-- Title -->
+        <h1 class="page-title">Finde den<br>Überlebenden!</h1>
+        <hr class="title-line">
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+
+            <!-- Left: Iteration Bar -->
+            <div class="iteration-panel">
+                <span class="iter-label">GROVER<br>ITER.</span>
+                <span class="iter-sublabel" id="iter-sublabel">OPTIMAL: 3</span>
+                <div class="iter-bar-track">
+                    <div class="iter-bar-fill" id="iter-fill"></div>
+                </div>
+                <span class="iter-counter" id="iter-counter">0/3</span>
+                <span class="iter-overshoot" id="iter-overshoot" style="display:none;">OVERSHOOT!</span>
+            </div>
+
+            <!-- Center: Thermal Canvas -->
+            <div class="thermal-col">
+            <div id="wait-overlay" class="wait-overlay" style="display:none;">
+                <span id="wait-text">WARTE AUF KLASSISCHEN SPIELER...</span>
+            </div>
+            <div class="thermal-wrapper">
+                <svg class="thermal-grid-svg" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="smallGrid" width="36" height="36" patternUnits="userSpaceOnUse">
+                            <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#a0f0ff" stroke-width="0.5"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#smallGrid)"/>
+                </svg>
+                <div class="scan-corner tl"></div>
+                <div class="scan-corner tr"></div>
+                <div class="scan-corner bl"></div>
+                <div class="scan-corner br"></div>
+                <canvas id="groverCanvas"></canvas>
+                <div id="turn-notice">DEIN ZUG</div>
+            </div>
+            </div>
+
+            <!-- Right: Control Panel -->
+            <div class="control-panel">
+                <div class="zug-header" id="zug-header">ZUG NO. 1</div>
+                <div class="turn-progress" id="grover-turn-counter">ZÜGE 0/10</div>
+                <hr class="panel-divider">
+                <div class="info-text" id="info-text">Wende das Orakel an</div>
+
+                <div class="button-group">
+                    <button id="btn-oracle" class="button panel-button" onclick="pressOracle()">
+                        <span>ORAKEL BENUTZEN</span>
+                    </button>
+                    <button id="btn-amplify" class="button panel-button" onclick="pressAmplify()" disabled>
+                        <span>AMPLITUDE ERHÖHEN</span>
+                    </button>
+                    <button id="btn-view" class="button panel-button button-view" onclick="toggleView()">
+                        <span id="view-label">WAHRSCHEINLICHKEIT</span>
+                    </button>
+                    <button id="btn-measure" class="button panel-button button-measure" onclick="pressMeasure()" disabled>
+                        <span>MESSEN</span>
+                    </button>
+                    <button id="btn-end-turn" class="button panel-button button-end-turn" onclick="pressEndTurn()" disabled>
+                        <span>ZUG BEENDEN</span>
+                    </button>
+                </div>
+
+                <button class="button zurück-button" onclick="goToMainMenu()"><span>ZURÜCK</span></button>
+            </div>
+
+        </div>
+
+        <!-- Human hat gefunden Banner -->
+        <div id="human-found-banner" style="display:none; position:fixed; top:60px; left:50%; transform:translateX(-50%); z-index:500; background:rgba(10,10,20,0.95); border:1px solid #00ff88; padding:10px 24px; color:#00ff88; font-family:'Courier New',monospace; font-size:13px; letter-spacing:2px; text-align:center; pointer-events:none;">
+            ✓ KLASSISCHER SPIELER HAT IHN GEFUNDEN - FINDEST DU IHN AUCH?
+        </div>
+
+        <div id="opponent-found-notice">DER ANDERE SPIELER HAT DEN SURVIVOR SCHON GEFUNDEN!</div>
+
+        <!-- Survivor gefunden — warte auf anderen Spieler -->
+        <div id="survivor-wait-overlay">
+            <div class="survivor-wait-card">
+                <div class="survivor-wait-title">SURVIVOR GEFUNDEN!</div>
+                <div class="survivor-wait-cell" id="survivor-cell-info"></div>
+                <div class="survivor-wait-sub">WARTE BIS ANDERER SPIELER DEN SURVIVOR GEFUNDEN HAT...</div>
+            </div>
+        </div>
+
+        <!-- End Overlay -->
+        <div id="end-overlay">
+            <div class="report-card">
+                <div class="report-title" id="end-title"></div>
+                <div class="report-subtitle">ERGEBNISSE:</div>
+                <hr class="report-divider">
+
+                <div class="report-section-title">STATISTIKEN</div>
+                <div class="report-row">
+                    <span class="report-row-label">SURVIVOR GEFUNDEN:</span>
+                    <span class="report-row-value" id="rpt-found">-</span>
+                </div>
+                <div class="report-row">
+                    <span class="report-row-label">BENÖTIGTE ZÜGE:</span>
+                    <span class="report-row-value" id="rpt-grover-steps">-</span>
+                </div>
+                <div class="report-row">
+                    <span class="report-row-label">MODUS:</span>
+                    <span class="report-row-value">QUANTENSUCHE</span>
+                </div>
+
+                <div class="report-comparison">
+                    <div class="report-comparison-item">
+                        <div class="cmp-label" id="rpt-player1-label">KLASSISCH</div>
+                        <div class="cmp-value" id="rpt-classic-zuege">- ZÜGE</div>
+                    </div>
+                    <div class="report-comparison-item">
+                        <div class="cmp-label" id="rpt-player2-label">GROVER</div>
+                        <div class="cmp-value" id="rpt-grover-zuege">- ZÜGE</div>
+                    </div>
+                </div>
+
+                <hr class="report-divider">
+                <div class="report-btn-row">
+                    
+                    <button class="button report-btn" onclick="goToMainMenu()"><span>HAUPTMENÜ</span></button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Anleitung Screen-->
+        <div id="anleitung-screen" >
+            <div class="anleitung">
+                <div class="anleitung-schrift">Anleitung</div>
+                <div class="anleitung-text1"> 
+                    <h2>Spielerklärung</h2>
+                    <p>Ziel des Spiels ist es, den <b>Grover-Quantenalgorithmus</b> zu demonstrieren.
+                        Es gibt einen Überlebenden, der gefunden werden muss. Die Spieler sehen durch eine Wärmekamera, 
+                        die das Wasser filmt und die Hitzespots (orangene Farbe) im Wasser aufzeigt. Bei all diesen Hitzespots 
+                        könnte der Überlebende sein. </p>
+                        
+                        <p>Ein Spieler spielt mit dem Grover Algorithmus, der andere sucht manuell. 
+                        Beide Spieler versuchen den Überlebenden so schnell wie möglich zu finden. Bei der manuellen Suche wird 
+                        erst ein Hitzespot ausgewählt und dann auf <b>“Spot aufdecken”</b> gedrückt. Bei der Grover-Suche wird das 
+                        <b>Orakel</b> benutzt, um den richtigen Hitzespot zu markieren; es dreht das Vorzeichen seiner Amplitude um. 
+                        Danach wird durch eine Inversion aller Amplituden um ihren Mittelwert die <b>Wahrscheinlichkeit</b> des markierten 
+                        Spots erhöht. Der Grover-Spieler kann zu jeder Zeit <b>“messen”</b>, was aus allen Hitzespots einen auswählt. 
+                        Der Hitzespot wird ausgewählt nach den jeweiligen Wahrscheinlichkeiten. In jeder Runde muss gewartet werden, 
+                        bis der andere Spieler mit seinem Zug fertig ist. </p>
+                </div>
+                <div class="anleitung-text-grover">
+                    <h2>Grover Algorithmus</h2>
+
+                    <p>Er ist entwickelt worden, um Probleme zu lösen, bei denen es zwar schwierig ist, eine Lösung zu finden, 
+                        aber einfach, sie zu verifizieren. Ein Beispiel dafür ist Sudoku. Es braucht Zeit, alle Felder korrekt 
+                        auszufüllen, aber eine fertige Lösung zu überprüfen geht schnell. Der grover Algorithmus kann solche 
+                        Probleme viel schneller lösen als ein klassischer Algorithmus, der alle möglichen Lösungen der Reihe 
+                        nach durchprobiert. Da der Grover Algorithmus auf einem Quantencomputer läuft, nutzt er die Eigenschaft 
+                        der <b>Superposition</b> - er kann alle möglichen Lösungen gleichzeitig berücksichtigen.</p>
+                </div>
+
+                <div class="anleitung-text-funktion"> 
+                    <p><h2>Wie funktioniert der Grover Algorithmus?</h2></p>
+                    <p>Zu Beginn werden alle möglichen Lösungen gleichwertig berücksichtigt. In diesem Spiel sind das alle 
+                        möglichen Hitzespots, bei denen der Überlebende sein könnte. Die <b>Amplitude</b> ist eine Zahl, die, 
+                        wenn man sie quadriert und den Betrag davon nimmt, die <b>Wahrscheinlichkeit</b> angibt, mit welcher die 
+                        Lösung die tatsächliche Lösung des Problems ist. Hat ein Hitzespot zum Beispiel eine Amplitude von 
+                        0,4, dann ist seine Wahrscheinlichkeit 16%, also eine 16 prozentige Chance, dass der Überlebende sich dort befindet. 
+
+                        Das Ziel ist es, die Wahrscheinlichkeit von einem Hitzespot so zu erhöhen, dass wir ziemlich sicher sagen können: “bei diesem Spot ist der Überlebende”. 
+                        Am Anfang haben alle Lösungen die gleiche Amplitude und damit auch die gleiche Wahrscheinlichkeit. In jeder Grover Iteration passieren <b>zwei Schritte: </b>
+                        <br><br>
+                        1. Das <b>Orakel wird angewandt</b>, es erkennt den richtigen Hitzespot und dreht das Vorzeichen seiner Amplitude um. Aus +0,4 wird also -0,4, das allein erhöht 
+                        die Warscheinlichkeit noch nicht, da 0,4^2 = 0,16 genau wie (-0,4)^2 = 0,16.
+                        <br><br>
+                        2. Erst im zweiten Schritt, der <b>Inversion um den Mittelwert</b>, werden alle Amplituden so gespiegelt, dass die markierte Amplitude wächst und alle anderen sinken. 
+                        <br><br>
+                        Diese beiden Schritte zusammen bilden eine <b>Grover Iteration</b>.  Nach wenigen Iterationen ist dann die Wahrscheinlichkeit des richtigen Hitzespots so hoch, dass 
+                        wir mit großer Sicherheit den Überlebenden finden. Die nötige Anzahl der Iterationen hängt davon ab wie viele Hitzespots es gibt; je mehr mögliche Lösungen, 
+                        desto mehr Iterationen gibt es. Wenn über die optimale Anzahl an Iterationen hinausgegangen wird, dann wird die Amplitude und damit die Wahrscheinlichkeit wieder <b>kleiner</b>.</p> 
+                                
+                    
+                </div>
+
+                <div class="anleitung-text-messen"> 
+
+                    <h2>Messen</h2>
+
+                    <p>In der Realität passiert all das versteckt vor uns. Wir können niemals die Wahrscheinlichkeiten oder Amplituden sehen, 
+                        denn eine Eigenschaft von Quanten Teilchen ist, dass, wenn man sie misst, dann kollabiert der Zustand der 
+                        Wahrscheinlichkeiten und eine mögliche Lösung wird ausgewählt. Wenn wir messen, dann wird nach den 
+                        Wahrscheinlichkeiten die die möglichen Lösungen gerade haben, eine Lösung ausgewählt und ihre Wahrscheinlichkeit 
+                        nimmt <b>100%</b> an, während die Wahrscheinlichkeiten aller anderen möglichen Lösungen <b>0%</b> annehmen. Wenn wir also zu 
+                        Anfang des Grover Algorithmus messen, dann haben alle möglichen Lösungen die gleiche, und zwar eine sehr kleine 
+                        Wahrscheinlichkeit. Das bedeutet, es wird zufällig eine mögliche Lösung ausgewählt. Zum Beispiel hier haben alle 
+                        16 Hitzespots zu Anfang die Wahrscheinlichkeit <b>6.2%</b>. Es ist also sehr unwahrscheinlich, dass die richtige Lösung 
+                        ausgewählt wird. Wenn man aber nach der zweiten Iteration misst, dann hat die richtige Lösung schon <b>90,5%</b> 
+                        Wahrscheinlichkeit beim messen gewählt zu werden.</p>
+                    
+                </div>
+
+                <div class="anleitung-text-orakel">
+                    <h2>Woher weiss das Orakel bei welchem Spot das Vorzeichen umgedreht werden muss?</h2>
+    
+                    <p>Das Orakel ist wie eine <b>Black Box</b>, bei der man nicht rein schauen kann. Wenn das Orakel eine mögliche Lösung 
+                        als Input bekommt, kann es ausspucken, ob es die richtige Lösung ist oder nicht. Es kann aber nicht die 
+                        Lösung selber zurückgeben. Da der Algorithmus auf einem Quantencomputer läuft, kann das Orakel alle möglichen 
+                        Lösungen <b>“gleichzeitig”</b> testen. Warum kann man nicht einfach schon bei der ersten Iteration nachschauen, welche 
+                        Lösung das Orakel ausgewählt hat? Wenn man den Zustand misst, dann <b>kollabiert</b> der Zustand der Superposition, 
+                        also eine mögliche Lösung wird ausgewählt und ihre Wahrscheinlichkeit nimmt 100% an, während alle anderen 0% 
+                        annehmen. Wenn man das schon nach der ersten Iteration tut, dann ist die Wahrscheinlichkeit, dass die richtige 
+                        Lösung gewählt wird trotzdem relativ gering. Hier, bei 16 Hitzespots ist es eine ca. <b>50% Chance</b>, dass der 
+                        richtige Spot gewählt wird. Deshalb müssen wir warten bis der Grover Algorithmus alle seine Iterationen 
+                        durchgegangen ist, um die Wahrscheinlichkeit der richtigen Lösung zu maximieren.</p>
+                    <br>
+                </div>
+                <form>
+                    <button type="button" class="button anleitung-schliessen-button" onclick="anleitungSchliessen()"><span>X</span></button>
+                </form>
+            </div>
+            
+            
+        </div>
+
+
+
+        <!-- Bottom Bar -->
+        <hr class="bottom-line">
+        <div class="bottom-bar">
+            <div class="background-container-bottom">
+                <h3 class="background-writing-left">DRONE V4.2 // WÄRME-CAM AKTIV</h3>
+                <h3 class="background-writing-middle">SIGNAL STARK</h3>
+                <h3 class="background-writing-right">Zone: NORDSEE-8</h3>
+            </div>
+        </div>
+
+        <script src="grover.js"></script>
+    </body>
+</html>

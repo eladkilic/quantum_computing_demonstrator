@@ -1,0 +1,36 @@
+{
+  "current_game": {
+    "aktuelle_runde": 0,
+    "max_zuege": 10,
+    "human_survivor_found": false,
+    "grover_survivor_found": false,
+    "game_phase": "game",
+    "survivor_cell": 1,
+    "grid_cells": [
+      28.9,
+      36.2,
+      26.9,
+      23.6,
+      27.2,
+      30.5,
+      32.4,
+      32.1,
+      26.7,
+      25.2,
+      20.8,
+      20.8,
+      27.8,
+      29.9,
+      26.1,
+      33.5
+    ],
+    "human_rounds_completed": 0,
+    "grover_rounds_completed": 0,
+    "gewinner": null,
+    "human_ready_for_next_round": false,
+    "grover_ready_for_next_round": false,
+    "round_active": true,
+    "saved_at": "2026-06-01T19:06:20.730318",
+    "version": "1.0"
+  }
+}
